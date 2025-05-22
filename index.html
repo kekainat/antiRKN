@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Обход блокировок</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
+        input { padding: 10px; width: 300px; margin: 10px; }
+        button { padding: 10px 20px; background: #4CAF50; color: white; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>🔓 Обход блокировок</h1>
+    <p>Введите URL сайта, который нужно открыть:</p>
+    
+    <input type="text" id="url" placeholder="https://example.com">
+    <button onclick="openProxy()">Открыть</button>
+    
+    <p>Или выберите прокси:</p>
+    <div>
+        <button onclick="window.open('https://browser.lol')">Browser.lol</button>
+        <button onclick="window.open('https://croxyproxy.com')">CroxyProxy</button>
+        <button onclick="window.open('https://www.proxysite.com')">ProxySite</button>
+    </div>
+
+    <script>
+        function openProxy() {
+            const url = document.getElementById('url').value;
+            if (!url) return alert("Введите URL!");
+            
+            // Выбор случайного прокси
+            const proxies = [
+                `https://browser.lol/#${url}`,
+                `https://croxyproxy.com/start.aspx?q=${encodeURIComponent(url)}`,
+                `https://www.proxysite.com/facebook/?q=${encodeURIComponent(url)}`
+            ];
+            
+            const randomProxy = proxies[Math.floor(Math.random() * proxies.length)];
+            window.open(randomProxy);
+        }
+    </script>
+</body>
+</html>
